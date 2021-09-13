@@ -1,8 +1,12 @@
+import api
 from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 
 # Create your views here.
-def api_overview(request):
+@api_view
+def apiOverview(request):
     api_urls = {
       'list':'/product-list/',
       'detail-view':'/product-detail/<int:id>/',
@@ -10,3 +14,4 @@ def api_overview(request):
       'update':'product-update/<int:id>/',
       'delete': 'product-delete/<int:id>/'
     }
+    return Response(api_urls)
